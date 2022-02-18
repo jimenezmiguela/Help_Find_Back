@@ -1,3 +1,19 @@
+
+# This allows your server to accept REST requests from any origin. This is not a good general practice — you would want to specify the address of your front end application instead of * —
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+
+    resource '*',
+             headers: :any,
+             methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+end
+
+
+
+
+
 # Be sure to restart your server when you modify this file.
 
 # Avoid CORS issues when API is called from the frontend app.
