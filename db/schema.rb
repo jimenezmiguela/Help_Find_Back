@@ -10,12 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_001902) do
+ActiveRecord::Schema.define(version: 2022_02_22_024155) do
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "missing_people", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "sex"
+    t.string "hair_color"
+    t.integer "weight"
+    t.string "race"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "status_reports", force: :cascade do |t|
+    t.integer "missing_person_id", null: false
+    t.string "case_id"
+    t.string "description"
+    t.string "details"
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["missing_person_id"], name: "index_status_reports_on_missing_person_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,4 +52,5 @@ ActiveRecord::Schema.define(version: 2022_02_18_001902) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "status_reports", "missing_people"
 end
