@@ -25,6 +25,15 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Help_Find_Back, Final Project, 2.17.22
+# Creating the API Server Application
+# Initial Setup
+# You will need some additional gems. Add the following to your Gemfile. These settings should be added before the group development, test section.
+gem 'devise'
+gem 'devise-jwt'
+gem 'rack-cors'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
