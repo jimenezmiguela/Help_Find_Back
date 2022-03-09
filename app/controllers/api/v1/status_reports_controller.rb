@@ -13,7 +13,7 @@ class Api::V1::StatusReportsController < ApplicationController
   # GET /missing_persons/:missing_person_id/status_reports/:id
   def show
     @missingPerson = MissingPerson.find(params[:missing_person_id])
-		@statusReport = @missingPerson.status_reports(params[:id])
+		@statusReport = @missingPerson.status_reports.find(params[:id])
     if @statusReport = @missingPerson.status_reports.find(params[:id])
 		render json: @statusReport, status: 200
 		# 200:  successfully found it

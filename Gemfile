@@ -33,6 +33,11 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
 
+# Setting Up for Rspec and Swagger
+gem 'rspec-rails'
+gem 'rexml'
+# The rswag line is to add the swagger gem
+gem 'rswag'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,3 +52,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
+end

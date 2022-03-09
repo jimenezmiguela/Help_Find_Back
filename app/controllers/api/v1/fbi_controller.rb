@@ -10,7 +10,7 @@ class Api::V1::FbiController < ApplicationController
 
 
     render json: @res.body
-  
+
 
   end
 end
