@@ -1,0 +1,331 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/fbi":
+    get:
+      summary: List FBI Query
+      tags:
+      - FBI
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+  "/api/v1/missing_persons":
+    get:
+      summary: List All Missing Persons' Files
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Create A Missing Person File
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - sex
+              - race
+              properties:
+                name:
+                  type: string
+                sex:
+                  type: string
+                race:
+                  type: string
+        required: true
+  "/api/v1/missing_persons/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Show A Missing Person File
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: Update A Missing Person's File
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                sex:
+                  type: string
+                race:
+                  type: string
+    put:
+      summary: Update A Missing Person's File
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                sex:
+                  type: string
+                race:
+                  type: string
+    delete:
+      summary: Delete A Missing Person's File
+      tags:
+      - Missing Persons
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+  "/api/v1/newsdata":
+    get:
+      summary: List Newsdata Query
+      tags:
+      - Newsdata
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+  "/api/v1/missing_persons/{missing_person_id}/status_reports":
+    parameters:
+    - name: missing_person_id
+      in: path
+      description: missing_person_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List All Status Reports
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create status_report
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - description
+              - details
+              properties:
+                description:
+                  type: string
+                details:
+                  type: string
+        required: true
+  "/api/v1/missing_persons/{missing_person_id}/status_reports/{status_report_id}":
+    parameters:
+    - name: missing_person_id
+      in: path
+      description: missing_person_id
+      required: true
+      schema:
+        type: string
+    - name: status_report_id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show status_report
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update status_report
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                details:
+                  type: string
+        required: true
+    put:
+      summary: update status_report
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                details:
+                  type: string
+        required: true
+    delete:
+      summary: delete status_report
+      tags:
+      - Status Reports
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+  "/api/v1/twitter":
+    get:
+      summary: List Twitter Query
+      tags:
+      - Twitter
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
+  "/users":
+    post:
+      summary: Create User
+      tags:
+      - Register API User
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - password
+              properties:
+                user:
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+        required: true
+  "/users/sign_in":
+    post:
+      summary: Creates A Session
+      tags:
+      - Start API Session
+      parameters: []
+      responses:
+        '201':
+          description: session jwt token created
+        '401':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              required:
+              - email
+              - password
+        required: true
+  "/users/sign_out":
+    delete:
+      summary: Destroy JWT token
+      tags:
+      - Terminate API Session
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: blacklist token
+        '401':
+          description: no token to blacklist
+components:
+  securitySchemes:
+    Bearer:
+      description: Bearer token
+      type: apiKey
+      name: Authorization
+      in: header
+servers:
+- url: ''

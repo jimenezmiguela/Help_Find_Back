@@ -9,7 +9,6 @@ class Api::V1::MissingPersonsController < ApplicationController
   def index
     @missingPersons = MissingPerson.all
     render json: @missingPersons
-
   end
 
   # GET /missing_persons/:id
@@ -63,6 +62,7 @@ class Api::V1::MissingPersonsController < ApplicationController
     private
 
     def missing_person_params
+      # params.permit(:name, :age, :sex, :hair_color, :weight, :race)
       params.require(:missing_person).permit(:name, :age, :sex, :hair_color, :weight, :race)
     end
 
