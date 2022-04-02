@@ -19,3 +19,4 @@ Issue Link: [ISSUE](ISSUE LINK HERE)
 - [ ] I added tests to cover new functionality
 - [ ] All new and existing tests are passing (`bundle exec rspec`)
 - [ ] I updated my branch with master so that they can be merged easily
+- [ ] Check this if you like spaghetti
