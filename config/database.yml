@@ -1,3 +1,9 @@
+# PostgreSQL
+#   gem install pg
+
+# Ensure the pg gem is defined in your Gemfile
+#   gem 'pg'
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -5,14 +11,14 @@ default: &default
 
 development:
   <<: *default
-  database: help_find_back_development
+  database: help_find_back_development                      #insert the name of your app instead of "sample"
 
 test:
   <<: *default
-  database: help_find_back_test
+  database: help_find_back_test                             #insert the name of your app instead of "sample"
 
 production:
   <<: *default
-  database: help_find_back_production
-  username: help_find_back
-  password: <%= ENV['HELP_FIND_BACK_DATABASE_PASSWORD'] %> 
+  database: help_find_back_production                       #insert the name of your app instead of "sample"
+  username: help_find_back                                  #insert the name of your app instead of "sample"
+  password: <%= ENV['HELP_FIND_BACK_DATABASE_PASSWORD'] %>  #insert the name of your app instead of "sample"
