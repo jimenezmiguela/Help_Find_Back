@@ -7,7 +7,7 @@ class Api::V1::TwitterController < ApplicationController
     # Twitter
     require 'net/http'
 
-    uri = URI("https://api.twitter.com/2/tweets/search/recent?query=missing%20person")
+    uri = URI("https://api.twitter.com/2/tweets/search/recent?query=%22missing+person%22+OR+%22missingkids%22")
     @req = Net::HTTP::Get.new(uri)
     @req['Authorization'] = "#{Rails.application.credentials.devise[:twitter_secret_key]}"
 
