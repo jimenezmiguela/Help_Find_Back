@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_02_22_024155) do
   end
 
   create_table "status_reports", force: :cascade do |t|
-    t.integer "missing_person_id", null: false
+    t.bigint "missing_person_id", null: false
     t.string "case_id"
     t.string "description"
     t.string "details"
