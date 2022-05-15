@@ -5,9 +5,11 @@ class Api::V1::MissingPersonsController < ApplicationController
   before_action :is_user_logged_in
   before_action :set_missing_person, only: [:show, :update, :destroy]
 
+  MAX_PAGINATION_LIMIT = 3
+
   # GET /missing_persons
   def index
-    @missingPersons = MissingPerson.all
+    @missingPersons = MissingPerson.limit(limit).offset(params[:offset])
     render json: @missingPersons
   end
 
@@ -62,6 +64,13 @@ class Api::V1::MissingPersonsController < ApplicationController
     end
 
     private
+
+    def limit
+       [
+         params.fetch(:limit, MAX_PAGINATION_LIMIT).to_i, 
+         MAX_PAGINATION_LIMIT
+       ].min
+    end
 
     def missing_person_params
       # params.permit(:name, :age, :sex, :hair_color, :weight, :race)
