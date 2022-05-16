@@ -14,7 +14,7 @@ default: &default
   timeout: 5000
 development:
   <<: *default
-  database: help_find_back
+  database: Help_Find_Back
   # database: db/development.sqlite3
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,12 +22,12 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: help_find_back_test
+  database: Help_Find_Back_Test
   pool: 5
   timeout: 5000
 production:
   <<: *default
   adapter: postgresql
-  database: help_find_back_production
+  database: Help_Find_Back_Production
   pool: 5
   timeout: 5000
