@@ -29,12 +29,14 @@ class Api::V1::MissingPersonsController < ApplicationController
 
     # POST /missing_persons
     def create
+      
       @missingPerson = MissingPerson.new(missing_person_params)
-      if @missingPerson.save
+      #byebug
+      if @missingPerson.save == true
         render json: @missingPerson, status: 201
         # 201:  successfully created
       else
-        render json: { error:
+        render json: {error: 
           "Could not create missing person: #{@missingPerson.errors.full_messages.to_sentence}"},
           status: 400
           # 400: bad request
