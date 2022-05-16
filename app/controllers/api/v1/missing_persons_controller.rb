@@ -5,7 +5,7 @@ class Api::V1::MissingPersonsController < ApplicationController
   before_action :is_user_logged_in
   before_action :set_missing_person, only: [:show, :update, :destroy]
 
-  MAX_PAGINATION_LIMIT = 3
+  MAX_PAGINATION_LIMIT = 10
 
   # GET /missing_persons
   def index
