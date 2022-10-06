@@ -16,6 +16,5 @@ test:
   database: help_find_back_test                #insert the name of your app instead of "sample"
 production:
   <<: *default
-  database: help_find_back_production          #insert the name of your app instead of "sample"
-  username: help_find_back                    #insert the name of your app instead of "sample"
-  password: <%= ENV['HELP_FIND_BACK_DATABASE_PASSWORD'] %> #insert the name of your app instead of "sample"
+  url: <%= Rails.application.credentials.elephant_sql_id %>
+  sslmode: "require"
